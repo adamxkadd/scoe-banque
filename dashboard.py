@@ -7,7 +7,7 @@ from PIL import Image
 import io
 
 # API_URL = "http://127.0.0.1:8000/"
-API_URL = https://scoe-banque.streamlit.app/
+API_URL = "https://scoe-banque.streamlit.app/"
 dataset = pd.read_csv('data.csv')
 dataset = dataset.drop(['Unnamed: 0'], axis=1)
 dataset = dataset.fillna('')
