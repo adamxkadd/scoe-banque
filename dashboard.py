@@ -7,7 +7,7 @@ from PIL import Image
 import io
 
 API_URL = "http://127.0.0.1:8000/"
-dataset = pd.read_csv('X_prod5.csv')
+dataset = pd.read_csv('data.csv')
 dataset = dataset.drop(['Unnamed: 0'], axis=1)
 dataset = dataset.fillna('')
 sk_ids = list(dataset['SK_ID_CURR'])[:50]
