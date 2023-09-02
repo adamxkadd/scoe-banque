@@ -27,7 +27,7 @@ print("Model loaded", model)
 def loaded():
     return "ICI API…"
 
-@app.post("/predict")
+@app.get("/predict")
 async def create_item(item: Item):
     return item
     
