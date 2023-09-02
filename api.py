@@ -13,6 +13,8 @@ import lightgbm as lgb
 
 app = FastAPI()
 
+print("Hi API Scoring")
+
 # Charger le modèle et le mettre en cache
 file = open("lgbm.pkl", 'rb')
 object_file = joblib.load(file)
@@ -28,7 +30,8 @@ def loaded():
 async def scoring(data: dict):
     data_df = pd.DataFrame.from_dict(data, orient='index').transpose()
     applicant_score = model.predict_proba(data_df)[0][1] * 100 
-    return {"status": "ok", "score": applicant_score}
+    # return {"status": "ok", "score": applicant_score}
+    return {"score": "applicant_score"}
 
 @app.post('/features_imp/')
 # async def send_features_importance(data: dict):
