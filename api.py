@@ -14,7 +14,7 @@ import lightgbm as lgb
 app = FastAPI()
 
 # Charger le modèle et le mettre en cache
-file = open("lgbm55.pkl", 'rb')
+file = open("lgbm.pkl", 'rb')
 object_file = joblib.load(file)
 file.close()
 model = object_file
