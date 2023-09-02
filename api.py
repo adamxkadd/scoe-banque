@@ -27,13 +27,6 @@ print("Model loaded", model)
 def loaded():
     return "ICI API…"
 
-df = pd.DataFrame({
-  'first column': [1, 2, 3, 4],
-  'second column': [10, 20, 30, 40]
-})
-
-df
-
 @app.post('/predict/')
 async def scoring(data: dict):
     response_text = "Le score est : 42"  
