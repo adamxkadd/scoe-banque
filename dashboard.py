@@ -26,25 +26,25 @@ sk_id_infos = sk_id_infos.drop(['SK_ID_CURR'], axis=1)
 print(sk_id_infos)
 data = sk_id_infos.to_dict(orient='records')[0]
 
-# # Bouton pour effectuer la prédiction
-# if st.button('Prédire'):
-#     response = requests.post(API_URL + 'predict/', json=data)
-#     if response.status_code == 200:
-#         result = response.json()
-#         st.success(f'Résultat du Scoring : {result["score"]:.2f}')
-#     else:
-#         st.error('Erreur lors de la prédiction. Veuillez vérifier vos données.')
-
+# Bouton pour effectuer la prédiction
 if st.button('Prédire'):
     response = requests.post(API_URL + 'predict/', json=data)
     if response.status_code == 200:
         result = response.json()
-        if result["score"] > 2:
-            st.markdown(f'<span style="color: white; background-color: red">Résultat du Scoring : {result["score"]:.2f}</span>', unsafe_allow_html=True)
-        else:
-            st.success(f'Résultat du Scoring : {result["score"]:.2f}')
+        st.success(f'Résultat du Scoring : {result["score"]:.2f}')
     else:
         st.error('Erreur lors de la prédiction. Veuillez vérifier vos données.')
+
+# if st.button('Prédire'):
+#     response = requests.post(API_URL + 'predict/', json=data)
+#     if response.status_code == 200:
+#         result = response.json()
+#         if result["score"] > 2:
+#             st.markdown(f'<span style="color: white; background-color: red">Résultat du Scoring : {result["score"]:.2f}</span>', unsafe_allow_html=True)
+#         else:
+#             st.success(f'Résultat du Scoring : {result["score"]:.2f}')
+#     else:
+#         st.error('Erreur lors de la prédiction. Veuillez vérifier vos données.')
 
 
 # Bouton pour obtenir l'importance des fonctionnalités
