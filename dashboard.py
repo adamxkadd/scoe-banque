@@ -36,7 +36,8 @@ if st.button('Prédire'):
         except json.decoder.JSONDecodeError as e:
             st.error('Erreur lors de la prédiction. La réponse de l\'API n\'est pas valide.')
     else:
-    st.error('Erreur lors de la prédiction. Veuillez vérifier vos données.')
+        st.error('Erreur lors de la prédiction. Veuillez vérifier vos données.')
+
 
 # if st.button('Prédire'):
 #     response = requests.post(API_URL + 'predict/', json=data)
