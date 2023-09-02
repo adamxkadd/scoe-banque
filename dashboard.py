@@ -35,7 +35,7 @@ df
 
 
 if st.button('Prédire'):
-    response = requests.post(API_URL + 'predict/', json=data)
+    response = requests.post(API_URL + 'predict', json=data)
     if response.status_code == 200:
         try:
             response_json = json.dumps(response.json())  # Convertir la réponse en chaîne JSON
