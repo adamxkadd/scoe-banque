@@ -26,6 +26,13 @@ sk_id_infos = sk_id_infos.drop(['SK_ID_CURR'], axis=1)
 print(sk_id_infos)
 data = sk_id_infos.to_dict(orient='records')[0]
 
+df = pd.DataFrame({
+  'first column': [1, 2, 3, 4],
+  'second column': [10, 20, 30, 40]
+})
+
+df
+
 
 if st.button('Prédire'):
     response = requests.post(API_URL + 'predict/', json=data)
