@@ -25,7 +25,8 @@ sk_id_infos = dataset[dataset['SK_ID_CURR'] == sk_id_curr]
 sk_id_infos = sk_id_infos.drop(['SK_ID_CURR'], axis=1)
 print(sk_id_infos)
 data = sk_id_infos.to_dict(orient='records')[0]
-
+data
+   
 # Bouton pour effectuer la prédiction
 if st.button('Prédire'):
     response = requests.post(API_URL + 'predict/', json=data)
