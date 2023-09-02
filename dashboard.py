@@ -27,15 +27,15 @@ print(sk_id_infos)
 data = sk_id_infos.to_dict(orient='records')[0]
 
 # Bouton pour effectuer la prédiction
-if st.button('Prédire'):
-    response = requests.post(API_URL + 'predict/', json=data)
-    if response.status_code == 200:
-        try:
-            result = response.json()
-            st.success(f'Résultat du Scoring : {result["score"]:.2f}')
-        except json.decoder.JSONDecodeError as e:
-            st.error('Erreur lors de la prédiction. La réponse de l\'API n\'est pas valide.')
-     else:
+    if st.button('Prédire'):
+        response = requests.post(API_URL + 'predict/', json=data)
+        if response.status_code == 200:
+            try:
+                result = response.json()
+                st.success(f'Résultat du Scoring : {result["score"]:.2f}')
+            except json.decoder.JSONDecodeError as e:
+                st.error('Erreur lors de la prédiction. La réponse de l\'API n\'est pas valide.')
+        else:
         st.error('Erreur lors de la prédiction. Veuillez vérifier vos données.')
 
 # if st.button('Prédire'):
