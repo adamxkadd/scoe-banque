@@ -3,7 +3,7 @@
 import streamlit as st
 import requests
 
-API_URL = "http://localhost:8000"  # Mettez l'URL de votre API FastAPI ici
+API_URL = "https://scoe-banque.streamlit.app/"  # Mettez l'URL de votre API FastAPI ici
 
 st.title("Tableau de bord Streamlit")
 
