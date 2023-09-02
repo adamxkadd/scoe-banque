@@ -31,13 +31,14 @@ if st.button('Prédire'):
     response = requests.post(API_URL + 'predict/', json=data)
     st.write(response.text)
     if response.status_code == 200:
-        try:
-            result = response.json()
+        result = response.json()
+        if "score" in result:
             st.success(f'Résultat du Scoring : {result["score"]:.2f}')
-        except json.decoder.JSONDecodeError as e:
-            st.error('Erreur lors de la prédiction. La réponse de l\'API n\'est pas valide.')
+        else:
+            st.error('Réponse API invalide.')
     else:
         st.error('Erreur lors de la prédiction. Veuillez vérifier vos données.')
+        
 
 
 # if st.button('Prédire'):
