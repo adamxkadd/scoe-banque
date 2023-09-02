@@ -8,6 +8,7 @@ import shap
 import matplotlib.pyplot as plt
 from PIL import Image
 from fastapi import FastAPI, HTTPException, Depends
+from fastapi.responses import JSONResponse
 import joblib
 import lightgbm as lgb
 
@@ -26,12 +27,21 @@ print("Model loaded", model)
 def loaded():
     return "ICI API…"
 
+
+
 @app.post('/predict/')
 async def scoring(data: dict):
     data_df = pd.DataFrame.from_dict(data, orient='index').transpose()
     applicant_score = model.predict_proba(data_df)[0][1] * 100 
-    # return {"status": "ok", "score": applicant_score}
-    return {"score": "applicant_score"}
+    response_data = {"status": "ok", "score": applicant_score}
+    return JSONResponse(content=response_data)
+
+# @app.post('/predict/')
+# async def scoring(data: dict):
+#     data_df = pd.DataFrame.from_dict(data, orient='index').transpose()
+#     applicant_score = model.predict_proba(data_df)[0][1] * 100 
+#     # return {"status": "ok", "score": applicant_score}
+#     return {"score": "applicant_score"}
 
 @app.post('/features_imp/')
 # async def send_features_importance(data: dict):
