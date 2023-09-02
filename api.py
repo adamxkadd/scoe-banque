@@ -27,9 +27,16 @@ print("Model loaded", model)
 def loaded():
     return "ICI API…"
 
-@app.get("/predict")
-async def create_item(item: Item):
-    return item
+if st.button('Prédire'):
+    response = requests.post(API_URL + 'predict/', json=data)
+    if response.status_code == 200:
+        result = response.json()
+        if result["score"] > 2:
+            st.warning(f'Client Non Solvable - Score  : {result["score"]:.2f}')
+        else:
+            st.success(f'Client Solvable - Score : {result["score"]:.2f}')
+    else:
+        st.error('Erreur lors de la prédiction. Veuillez vérifier vos données.')
     
 # @app.post('/predict/')
 # async def scoring(data: dict):
@@ -105,5 +112,6 @@ async def interpretation(data: dict):
 
 
 if __name__ == "__main__":
-    # import uvicorn
+    import uvicorn
     # uvicorn.run(app, host="127.0.0.1", port=8000, debug=True)
+    uvicorn.run(app, host="https://scoe-banque.streamlit.app/")
