@@ -27,10 +27,14 @@ print("Model loaded", model)
 def loaded():
     return "ICI API…"
 
-@app.post('/predict/')
-async def scoring(data: dict):
-    response_text = "Le score est : 42"  
-    return JSONResponse(content=response_text)
+@app.post("/predict/")
+async def create_item(item: Item):
+    return item
+    
+# @app.post('/predict/')
+# async def scoring(data: dict):
+#     response_text = "Le score est : 42"  
+#     return JSONResponse(content=response_text)
 
 
 # @app.post('/predict/')
