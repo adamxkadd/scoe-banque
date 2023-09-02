@@ -29,6 +29,7 @@ data = sk_id_infos.to_dict(orient='records')[0]
 # Bouton pour effectuer la prédiction
 if st.button('Prédire'):
     response = requests.post(API_URL + 'predict/', json=data)
+    st.write(response.text)
     if response.status_code == 200:
         try:
             result = response.json()
